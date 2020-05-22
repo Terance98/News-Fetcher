@@ -1,3 +1,11 @@
+/*
+Module Name : fetchNews
+Input : queryString
+Endpoint : /fetch-news
+Method: POST
+
+A POST API which takes in a queryString, uses the News service to fetch news articles based on the queryString and returns the results.
+*/
 const fetchNews = async (req, res) => {
     try {
         const queryString = req.body.queryString;
@@ -18,7 +26,8 @@ const fetchNews = async (req, res) => {
                 message: `Fetching the news with keyword ${queryString}`,
                 data: news,
             });
-        }
+        } else throw err;
+        
     } catch (err) {
         console.log(err);
         res.badRequest({

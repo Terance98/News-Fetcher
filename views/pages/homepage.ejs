@@ -1,13 +1,16 @@
+<!-- The search container div. Displayed at initial page load    -->
 <div id="search-container">
   <input id="input-elem" class="form-control form-control-lg" type="text" placeholder="Please enter the keyword here..">
   <button id="search-btn" class="btn btn-outline-primary">Search</button>
 </div>
 
+<!-- The loader container div. Displayed during the time taken to complete the API call   -->
 <div id="loader-container" hidden>
   <h2>Fetching articles, please wait</h2>
   <div class="loader"></div>
 </div>
 
+<!-- The news container div. Displayed after the API has returned its response   -->
 <div id="news-container-parent" hidden>
   <i id="back-button" class="fa fa-2x fa-arrow-left"></i>
   <div id="news-container">
@@ -126,28 +129,41 @@
     const inputElem = document.getElementById('input-elem');
     const queryString = inputElem.value;
 
+    //The value of the searchBox is emptied after fetching its value
     inputElem.value = "";
 
     const loaderContainer = document.getElementById('loader-container');
     const searchContainer = document.getElementById('search-container');
 
+    //The search container is made hidden and the loader container is displayed instead.
     loaderContainer.hidden = false;
     searchContainer.hidden = true;
 
+    //Perform queryOperation only if queryString is non-empty
     if (queryString !== "") {
+
+      //Construct the query object for API call
       const queryObj = {
         queryString: queryString
       }
 
+      //Making a post request to the API inorder to fetch the news articles
       axios.post(FETCH_NEWS_API_ENDPOINT, queryObj)
         .then(({ data }) => {
+          //Check if the API returned success.
           if (data.success) {
+            //Articles array is stored into articles
             const articles = data.data.articles;
+
             const newsContainer = document.getElementById('news-container');
             const newsContainerParent = document.getElementById('news-container-parent');
+
+            //Loader container is made hidden and the news container is made visible.
             newsContainerParent.hidden = false;
             loaderContainer.hidden = true;
 
+            //If no articles was returned, show No results found
+            //Else dynamically populate the news articles into cards.
             if (!articles.length) {
               newsContainer.innerHTML = '<h1 style="text-align:center;">No results found</h1>';
             } else {
@@ -174,6 +190,8 @@
   }
 
   const showSearch = () => {
+    //This function is triggered when the back button is clicked.
+    //Hides the news container and displays back the search container.
     const searchContainer = document.getElementById('search-container');
     const newsContainer = document.getElementById('news-container');
     const newsContainerParent = document.getElementById('news-container-parent');
@@ -182,8 +200,13 @@
     newsContainer.innerHTML = "";
   }
 
+  //When back button is clicked, show the serach page
   document.getElementById('back-button').onclick = showSearch;
+
+  //When serach button is clicked trigger the showNews() function.
   document.getElementById('search-btn').onclick = showNews;
+
+  //When enter key is pressed, trigger the showNews() function/
   document.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
       showNews();
