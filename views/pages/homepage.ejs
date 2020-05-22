@@ -2,6 +2,12 @@
   <input id="input-elem" class="form-control form-control-lg" type="text" placeholder="Please enter the keyword here..">
   <button id="search-btn" class="btn btn-outline-primary">Search</button>
 </div>
+
+<div id="loader-container" hidden>
+  <h2>Fetching articles, please wait</h2>
+  <div class="loader"></div>
+</div>
+
 <div id="news-container-parent" hidden>
   <i id="back-button" class="fa fa-2x fa-arrow-left"></i>
   <div id="news-container">
@@ -50,7 +56,6 @@
     width: 60% !important;
     margin: 20px auto;
     flex-direction: row;
-    /* height: 200px; */
     box-sizing: border-box;
   }
 
@@ -74,6 +79,43 @@
     margin: 20px;
     cursor: pointer;
   }
+
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #0f4c81;
+    width: 120px;
+    height: 120px;
+    margin: 50px auto;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+
+  #loader-container {
+    margin: 15% auto;
+    width: 30%;
+  }
+
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>
 
 <script>
@@ -83,7 +125,15 @@
   const showNews = () => {
     const inputElem = document.getElementById('input-elem');
     const queryString = inputElem.value;
+
     inputElem.value = "";
+
+    const loaderContainer = document.getElementById('loader-container');
+    const searchContainer = document.getElementById('search-container');
+
+    loaderContainer.hidden = false;
+    searchContainer.hidden = true;
+
     if (queryString !== "") {
       const queryObj = {
         queryString: queryString
@@ -93,12 +143,11 @@
         .then(({ data }) => {
           if (data.success) {
             const articles = data.data.articles;
-            const searchContainer = document.getElementById('search-container');
             const newsContainer = document.getElementById('news-container');
             const newsContainerParent = document.getElementById('news-container-parent');
-            searchContainer.hidden = true;
             newsContainerParent.hidden = false;
-            // console.log(articles)
+            loaderContainer.hidden = true;
+
             if (!articles.length) {
               newsContainer.innerHTML = '<h1 style="text-align:center;">No results found</h1>';
             } else {
@@ -117,10 +166,10 @@
                                             </div>
                                           </div>`;
               }
+
             }
           }
         }).catch(err => console.log(err));
-
     }
   }
 
@@ -135,6 +184,10 @@
 
   document.getElementById('back-button').onclick = showSearch;
   document.getElementById('search-btn').onclick = showNews;
-
+  document.addEventListener('keyup', (event) => {
+    if (event.keyCode === 13) {
+      showNews();
+    }
+  });
 
 </script>

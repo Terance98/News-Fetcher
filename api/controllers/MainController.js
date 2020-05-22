@@ -30,4 +30,4 @@ const fetchNews = async (req, res) => {
     }
 };
 
-module.exports = { fetchNews }
+module.exports = { fetchNews };
