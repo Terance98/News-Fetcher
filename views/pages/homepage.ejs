@@ -6,7 +6,6 @@
 
 <!-- The loader container div. Displayed during the time taken to complete the API call   -->
 <div id="loader-container" hidden>
-  <h2>Fetching articles, please wait</h2>
   <div class="loader"></div>
 </div>
 
@@ -27,6 +26,18 @@
     background-color: #0f4c81;
     color: white;
   }
+
+  .loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #0f4c81;
+    width: 120px;
+    height: 120px;
+    margin: 50px auto;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+
 
 
 
@@ -67,6 +78,12 @@
       width: 90%;
     }
 
+    #loader-container {
+      top: 40%;
+      left: 30%;
+      position: absolute;
+    }
+
     #search-btn {
       border-radius: 25px;
       margin: 20px auto;
@@ -99,6 +116,12 @@
       width: 70%;
       display: flex;
       align-items: baseline;
+    }
+
+    #loader-container {
+      top: 40%;
+      left: 45%;
+      position: absolute;
     }
 
     #news-container {
@@ -144,21 +167,7 @@
       cursor: pointer;
     }
 
-    .loader {
-      border: 16px solid #f3f3f3;
-      border-radius: 50%;
-      border-top: 16px solid #0f4c81;
-      width: 120px;
-      height: 120px;
-      margin: 50px auto;
-      -webkit-animation: spin 2s linear infinite;
-      animation: spin 2s linear infinite;
-    }
 
-    #loader-container {
-      margin: 15% auto;
-      width: 30%;
-    }
 
     .truncate {
       width: 250px;
@@ -178,6 +187,12 @@
       width: 40%;
       display: flex;
       align-items: baseline;
+    }
+
+    #loader-container {
+      top: 40%;
+      left: 45%;
+      position: absolute;
     }
 
     #news-container {
@@ -221,22 +236,6 @@
     #back-button {
       margin: 20px;
       cursor: pointer;
-    }
-
-    .loader {
-      border: 16px solid #f3f3f3;
-      border-radius: 50%;
-      border-top: 16px solid #0f4c81;
-      width: 120px;
-      height: 120px;
-      margin: 50px auto;
-      -webkit-animation: spin 2s linear infinite;
-      animation: spin 2s linear infinite;
-    }
-
-    #loader-container {
-      margin: 15% auto;
-      width: 30%;
     }
 
     .truncate {
