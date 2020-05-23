@@ -18,17 +18,6 @@
 </div>
 
 <style>
-  #search-container {
-    margin: 20% auto;
-    width: 40%;
-    display: flex;
-    align-items: baseline;
-  }
-
-  #news-container {
-    margin: 5% auto;
-  }
-
   .btn {
     color: #0f4c81;
     border-color: #0f4c81;
@@ -39,65 +28,7 @@
     color: white;
   }
 
-  #search-btn {
-    border-radius: 25px;
-    margin-left: 20px;
-    width: 20%;
-  }
 
-  #search-btn:hover {
-    background-color: #0f4c81;
-    color: white;
-  }
-
-  #input-elem {
-    border-radius: 25px;
-  }
-
-  .news-card {
-    display: flex !important;
-    width: 60% !important;
-    margin: 20px auto;
-    flex-direction: row;
-    box-sizing: border-box;
-  }
-
-  .card-img-top {
-    height: 200px;
-    width: 400px;
-    object-fit: cover;
-  }
-
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
-
-  #view-article-btn {
-    align-self: flex-end;
-  }
-
-  #back-button {
-    margin: 20px;
-    cursor: pointer;
-  }
-
-  .loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #0f4c81;
-    width: 120px;
-    height: 120px;
-    margin: 50px auto;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-  }
-
-  #loader-container {
-    margin: 15% auto;
-    width: 30%;
-  }
 
   /* Safari */
   @-webkit-keyframes spin {
@@ -117,6 +48,202 @@
 
     100% {
       transform: rotate(360deg);
+    }
+
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 817px) {
+
+    .news-card {
+      width: 80% !important;
+      margin: 5% auto;
+    }
+
+    #search-container {
+      top: 40%;
+      left: 5%;
+      position: absolute;
+      width: 90%;
+    }
+
+    #search-btn {
+      border-radius: 25px;
+      margin: 20px auto;
+      width: 40%;
+      min-width: 200px;
+    }
+
+    #news-container {
+      margin: 5% auto;
+    }
+
+    #input-elem {
+      border-radius: 25px;
+    }
+
+    #back-button {
+      margin: 20px;
+      cursor: pointer;
+    }
+  }
+
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 818px) {
+
+    #search-container {
+      top: 50%;
+      left: 15%;
+      position: absolute;
+      width: 70%;
+      display: flex;
+      align-items: baseline;
+    }
+
+    #news-container {
+      margin: 5% auto;
+    }
+
+    #search-btn {
+      border-radius: 25px;
+      margin-left: 20px;
+      width: 20%;
+    }
+
+    #input-elem {
+      border-radius: 25px;
+    }
+
+    .news-card {
+      display: flex !important;
+      width: 80% !important;
+      margin: 20px auto;
+      flex-direction: row;
+      box-sizing: border-box;
+    }
+
+    .card-img-top {
+      height: 200px;
+      width: 300px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+
+    #view-article-btn {
+      align-self: flex-end;
+    }
+
+    #back-button {
+      margin: 20px;
+      cursor: pointer;
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #0f4c81;
+      width: 120px;
+      height: 120px;
+      margin: 50px auto;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+
+    #loader-container {
+      margin: 15% auto;
+      width: 30%;
+    }
+
+    .truncate {
+      width: 250px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 1190px) {
+    #search-container {
+      top: 50%;
+      left: 30%;
+      position: absolute;
+      width: 40%;
+      display: flex;
+      align-items: baseline;
+    }
+
+    #news-container {
+      margin: 5% auto;
+    }
+
+    #search-btn {
+      border-radius: 25px;
+      margin-left: 20px;
+      width: 20%;
+    }
+
+    #input-elem {
+      border-radius: 25px;
+    }
+
+    .news-card {
+      display: flex !important;
+      width: 600px;
+      margin: 20px auto;
+      flex-direction: row;
+      box-sizing: border-box;
+    }
+
+    .card-img-top {
+      height: 200px;
+      width: 400px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+
+    #view-article-btn {
+      align-self: flex-end;
+    }
+
+    #back-button {
+      margin: 20px;
+      cursor: pointer;
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #0f4c81;
+      width: 120px;
+      height: 120px;
+      margin: 50px auto;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+
+    #loader-container {
+      margin: 15% auto;
+      width: 30%;
+    }
+
+    .truncate {
+      width: auto;
+      white-space: pre-wrap;
+      overflow: visible;
+      text-overflow: ellipsis;
     }
   }
 </style>
@@ -177,7 +304,7 @@
                                             </div>
                                             <div class="card-body">
                                               <h5 class="card-title">${article.title}</h5>
-                                              <p class="card-text">${article.description.substring(0, descriptionTruncateLimiter)}</p>
+                                              <p class="card-text truncate">${article.description.substring(0, descriptionTruncateLimiter).concat('....')}</p>
                                               <a id="view-article-btn" href="${article.url}" class="btn btn-outline-primary" target="_blank">View Article</a>
                                             </div>
                                           </div>`;
