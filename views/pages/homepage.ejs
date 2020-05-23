@@ -129,18 +129,18 @@
     const inputElem = document.getElementById('input-elem');
     const queryString = inputElem.value;
 
-    //The value of the searchBox is emptied after fetching its value
-    inputElem.value = "";
-
-    const loaderContainer = document.getElementById('loader-container');
-    const searchContainer = document.getElementById('search-container');
-
-    //The search container is made hidden and the loader container is displayed instead.
-    loaderContainer.hidden = false;
-    searchContainer.hidden = true;
 
     //Perform queryOperation only if queryString is non-empty
     if (queryString !== "") {
+      //The value of the searchBox is emptied after fetching its value
+      inputElem.value = "";
+
+      const loaderContainer = document.getElementById('loader-container');
+      const searchContainer = document.getElementById('search-container');
+
+      //The search container is made hidden and the loader container is displayed instead.
+      loaderContainer.hidden = false;
+      searchContainer.hidden = true;
 
       //Construct the query object for API call
       const queryObj = {
